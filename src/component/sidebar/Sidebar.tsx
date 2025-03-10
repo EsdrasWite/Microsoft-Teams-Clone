@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./sidebar.module.css";
+import Link from "next/link";
 
 type menuTYpe = {
   id: number;
@@ -44,16 +45,20 @@ const Sidebar = () => {
   return (
     <div className={styles.container}>
       {menus.map((menu) => (
-        <div className={styles.items} key={menu.id}>
+        <Link
+          href={menu.path === "conversation" ? "/" : menu.path}
+          className={styles.items}
+          key={menu.id}
+        >
           <Image
             src={menu.icon}
             width={25}
             height={28}
-            alt=""
+            alt={menu.name}
             className={styles.icon}
           />
           <span className={styles.label}>{menu.name}</span>
-        </div>
+        </Link>
       ))}
     </div>
   );
