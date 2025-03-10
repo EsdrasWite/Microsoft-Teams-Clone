@@ -8,11 +8,12 @@
 }
 .logo{
     flex: 1;
-    padding-left: 10px;
+    padding-left: 30px;
 }
 .searchContent{
     flex: 2;
     display: flex;
+    gap: 10px;
 }
 .inputContainer{
     display: flex;
@@ -24,6 +25,7 @@
 }
 .arrows{
     display: flex;
+    gap: 10px;
 }
 .arrowLeft{
     cursor: pointer;
@@ -39,6 +41,10 @@ background-color: transparent;
 border: none;
 outline: none;
 padding-left: 10px;
+}
+.input::placeholder{
+    color: var(--text);
+    font-size: 14px;
 }
 
 .iconsContent{
