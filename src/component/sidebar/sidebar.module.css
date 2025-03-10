@@ -6,6 +6,8 @@
     align-items: center;
     height: calc(100vh - 45px);
     width: 80px;
+    position: sticky;
+    top: 45px;
 }
 
 .items{

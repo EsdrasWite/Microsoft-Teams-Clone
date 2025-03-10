@@ -5,6 +5,8 @@
     height: 45px;
     background-color: var(--background);
     color: var(--text);
+    position: sticky;
+    top: 0;
 }
 .logo{
     flex: 1;
