@@ -1,0 +1,8 @@
+.container{
+    background: rgb(95,95,99);
+    background: linear-gradient(90deg, rgba(95,95,99,1) 0%, rgba(83,67,110,1) 47%, rgba(42,19,79,1) 100%);
+    flex: 1;
+    border-radius: 10px;
+    /* padding-top: 40px;
+    padding-bottom: 30px; */
+}
