@@ -19,7 +19,41 @@ const ConversationMenu = () => {
           </div>
         </div>
       </div>
-      <div className={styles.content}>menu</div>
+      <div className={styles.content}>
+        <div className={styles.recentsChats}>
+          <div className={styles.titleContainer}>
+            <Image
+              src="/arrow.svg"
+              alt=""
+              width={15}
+              height={15}
+              className={styles.ico}
+            />
+            <span>Récentes</span>
+          </div>
+          <div className={styles.itemsChat}>
+            <div className={styles.itemChat}>
+              <div className={styles.avatar}>
+                <Image src="/group-1.svg" alt="" width={25} height={25} />
+              </div>
+              <span className={styles.newmsg}>Nouvelle conversation</span>
+            </div>
+          </div>
+        </div>
+        <div className={styles.othersChats}>
+          <div className={styles.titleContainer}>
+            <Image
+              src="/arrow.svg"
+              alt=""
+              width={15}
+              height={15}
+              className={styles.ico}
+            />
+            <span>Personnes que vous avez rencontrées</span>
+          </div>
+          <div className={styles.items}>Items</div>
+        </div>
+      </div>
       <div className={styles.btnContainer}>
         <button className={styles.btn}>
           <Image src="/user.svg" alt="" height={20} width={20} />
