@@ -1,8 +1,10 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import styles from "./conversationmenu.module.css";
 import Image from "next/image";
 
 const ConversationMenu = () => {
+  const [hoveredItem, sethoveredItem] = useState<boolean>(false);
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -51,7 +53,72 @@ const ConversationMenu = () => {
             />
             <span>Personnes que vous avez rencontrées</span>
           </div>
-          <div className={styles.items}>Items</div>
+          <div className={styles.itemsContact}>
+            <div
+              className={styles.itemContact}
+              onMouseEnter={() => sethoveredItem(true)}
+              onMouseLeave={() => sethoveredItem(false)}
+            >
+              <div className={styles.contactInfo}>
+                <div className={styles.avatarContact}>
+                  <span>KW</span>
+                </div>
+                <div
+                  className={`${styles.names} ${
+                    hoveredItem && styles.namesActive
+                  }`}
+                >
+                  <span>Kambale, Wite</span>
+                  <span>Bonjour, je suis sur Teams.</span>
+                </div>
+              </div>
+              {hoveredItem && (
+                <Image
+                  src="/more.svg"
+                  alt=""
+                  width={20}
+                  height={20}
+                  className={styles.moreIco}
+                />
+              )}
+            </div>
+            <div className={styles.itemContact}>
+              <div className={styles.contactInfo}>
+                <div className={styles.avatarContact}>
+                  <span>EM</span>
+                </div>
+                <div className={styles.names}>
+                  <span>Elisée Mulumba</span>
+                  <span>Bonjour, je suis sur Teams.</span>
+                </div>
+              </div>
+              <Image
+                src="/more.svg"
+                alt=""
+                width={20}
+                height={20}
+                className={styles.moreIco}
+              />
+            </div>
+            <div className={styles.itemContact}>
+              <div className={styles.contactInfo}>
+                <div className={styles.avatarContact}>
+                  <span>KW</span>
+                </div>
+                <div className={styles.names}>
+                  <span>Kevine Wanny</span>
+                  <span>Bonjour, je suis sur Teams.</span>
+                </div>
+              </div>
+              <Image
+                src="/more.svg"
+                alt=""
+                width={20}
+                height={20}
+                className={styles.moreIco}
+              />
+            </div>
+          </div>
         </div>
       </div>
       <div className={styles.btnContainer}>
