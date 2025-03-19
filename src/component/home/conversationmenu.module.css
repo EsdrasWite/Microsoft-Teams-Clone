@@ -39,7 +39,60 @@
     background-color: #494949;
 }
 
-.content{}
+.content{
+    flex: 1;
+    padding: 20px 10px;
+}
+
+.recentsChats{
+    display: flex;
+    flex-direction: column;
+}
+.titleContainer{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.titleContainer span{
+    font-size: 12px;
+    color: var(--textSoft);
+}
+.ico{
+    transform: rotate(180deg);
+}
+.itemsChat{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.itemChat{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 10px;
+    background-color: var(--foreground);
+}
+.itemChat span{
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: .3px;
+}
+
+.avatar{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #93969d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .btnContainer{
     padding: 5px 20px;
