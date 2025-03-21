@@ -17,6 +17,12 @@ const ConversationContent = () => {
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
       textareaRef.current.style.maxHeight = `300px`;
     }
+
+    return () => {
+      if (textareaRef.current) {
+        textareaRef.current.remove();
+      }
+    };
   }, [value]);
 
   const handleGroupe = () => {
