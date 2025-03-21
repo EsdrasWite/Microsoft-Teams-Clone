@@ -12,12 +12,17 @@ const ConversationMenu = () => {
         <div className={styles.iconContainer}>
           <div className={styles.item}>
             <Image src="/filter.svg" alt="" width={20} height={20} />
+            <span className={styles.tooltip}>Filtrer (Ctrl+Shift+F)</span>
           </div>
           <div className={styles.item}>
             <Image src="/camera.svg" alt="" width={20} height={20} />
+            <span className={styles.tooltip}>Réunion instantannée</span>
           </div>
           <div className={styles.item}>
             <Image src="/edit.svg" alt="" width={20} height={20} />
+            <span className={styles.tooltip}>
+              Nouvelle conversation (Ctrl+N)
+            </span>
           </div>
         </div>
       </div>
@@ -61,14 +66,14 @@ const ConversationMenu = () => {
             >
               <div className={styles.contactInfo}>
                 <div className={styles.avatarContact}>
-                  <span>KW</span>
+                  <span>DK</span>
                 </div>
                 <div
                   className={`${styles.names} ${
                     hoveredItem && styles.namesActive
                   }`}
                 >
-                  <span>Kambale, Wite</span>
+                  <span>Dorcas Katoto</span>
                   <span>Bonjour, je suis sur Teams.</span>
                 </div>
               </div>
@@ -106,7 +111,7 @@ const ConversationMenu = () => {
                   <span>KW</span>
                 </div>
                 <div className={styles.names}>
-                  <span>Kevine Wanny</span>
+                  <span>Kasereka Wite</span>
                   <span>Bonjour, je suis sur Teams.</span>
                 </div>
               </div>
