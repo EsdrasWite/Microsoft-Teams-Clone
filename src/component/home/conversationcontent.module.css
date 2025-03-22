@@ -37,7 +37,7 @@
 }
 
 
-.groupForm span{
+.groupForm input::placeholder{
     font-size: 13px;
     color: var(--text);
 }
@@ -143,6 +143,7 @@ height: 250px;
     width: 100%;
     color: var(--text);
     padding: 3px 10px;   
+    /* background-color: red; */
 }
 
 .icons{
