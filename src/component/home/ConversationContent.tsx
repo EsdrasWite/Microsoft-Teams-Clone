@@ -64,7 +64,12 @@ const ConversationContent = () => {
         </div>
       </div>
       <div className={styles.content}>content</div>
-      <div className={styles.footer}>footer</div>
+      <div className={styles.footer}>
+        <div className={styles.inputContainer}>
+          <textarea name="" id="" placeholder="Taper un message" rows={2} />
+          <div className={styles.icons}>Icon</div>
+        </div>
+      </div>
     </div>
   );
 };
