@@ -2,36 +2,60 @@
 import React, { useState } from "react";
 import styles from "./conversationmenu.module.css";
 import Image from "next/image";
+import FilterHeader from "./header/FilterHeader";
 
-const ConversationMenu = () => {
+type Props = {
+  setmsgFocused: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const ConversationMenu = (props: Props) => {
   const [hoveredItem, sethoveredItem] = useState<boolean>(false);
   const [titleExtended, settitleExtended] = useState<{
     recent: boolean;
     chat: boolean;
   }>({ recent: false, chat: false });
 
-  console.log(titleExtended.recent);
+  const [filterOpened, setfilterOpened] = useState<boolean>(false);
+
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <h4>Conversation</h4>
-        <div className={styles.iconContainer}>
-          <div className={styles.item}>
-            <Image src="/filter.svg" alt="" width={20} height={20} />
-            <span className={styles.tooltip}>Filtrer (Ctrl+Shift+F)</span>
-          </div>
-          <div className={styles.item}>
-            <Image src="/camera.svg" alt="" width={20} height={20} />
-            <span className={styles.tooltip}>Réunion instantannée</span>
-          </div>
-          <div className={styles.item}>
-            <Image src="/edit.svg" alt="" width={20} height={20} />
-            <span className={styles.tooltip}>
-              Nouvelle conversation (Ctrl+N)
-            </span>
+      {/* header primary? */}
+      {!filterOpened && (
+        <div className={styles.header}>
+          <h4>Conversation</h4>
+          <div className={styles.iconContainer}>
+            <div className={styles.item}>
+              <Image
+                src="/filter.svg"
+                alt=""
+                width={20}
+                height={20}
+                onClick={() => setfilterOpened(true)}
+              />
+              <span className={styles.tooltip}>Filtrer (Ctrl+Shift+F)</span>
+            </div>
+            <div className={`${styles.item} ${styles.meeting}`}>
+              <Image src="/camera.svg" alt="" width={20} height={20} />
+              <span className={styles.tooltip}>Réunion instantannée</span>
+            </div>
+            <div className={styles.item}>
+              <Image
+                src="/edit.svg"
+                alt=""
+                width={20}
+                height={20}
+                onClick={() => props.setmsgFocused(true)}
+              />
+              <span className={styles.tooltip}>
+                Nouvelle conversation (Ctrl+N)
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      )}
+
+      {/* header filter? */}
+      {filterOpened && <FilterHeader setOpen={setfilterOpened} />}
       <div className={styles.content}>
         <div className={styles.recentsChats}>
           <div className={styles.titleContainer}>
