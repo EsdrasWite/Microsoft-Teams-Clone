@@ -6,6 +6,7 @@ import Image from "next/image";
 const ConversationContent = () => {
   const [focused, setFocused] = useState<boolean>(false);
   const [focused2, setFocused2] = useState<boolean>(false);
+  const [focusedTA, setFocusedTA] = useState<boolean>(false);
   const [groupVisible, setgroupVisible] = useState<any>(false);
   const [value, setvalue] = useState<string>("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -67,9 +68,21 @@ const ConversationContent = () => {
           </div>
         </div>
       </div>
-      <div className={styles.content}>content</div>
+      <div className={styles.content}>
+        <div className={styles.imgContainer}>
+          <Image src="/messageIcon.png" alt="" fill />
+        </div>
+        <div className={styles.imgText}>
+          <h4>Vous démarrez une nouvelle conversation</h4>
+          <span>Tapez votre premier message ci-dessous.</span>
+        </div>
+      </div>
       <div className={styles.footer}>
-        <div className={styles.inputContainer}>
+        <div
+          className={`${styles.inputContainer} ${
+            focusedTA && styles.inputContainerActive
+          }`}
+        >
           <textarea
             ref={textareaRef}
             name=""
@@ -78,6 +91,8 @@ const ConversationContent = () => {
             rows={1}
             value={value}
             onChange={(e) => setvalue(e.target.value)}
+            onFocus={() => setFocusedTA(true)}
+            onBlur={() => setFocusedTA(false)}
           />
           {/* <div className={styles.icons}>Icon</div> */}
           <div className={styles.icContainer}>
