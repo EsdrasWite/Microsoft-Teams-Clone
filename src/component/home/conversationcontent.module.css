@@ -94,4 +94,32 @@
     height: 60px;
     background-color: var(--foreground);
     border-radius: 0px 0px 0px 10px;
+    display: flex;
+    align-items: center;
+}
+.inputContainer{
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+}
+
+.inputContainer textarea{
+    border: 1px solid gray;
+    outline: none;
+    border-radius: 5px;
+    background-color: transparent;
+    width: 100%;
+    color: var(--text);
+    padding: 3px 10px;
+    
+}
+
+.icons{
+    position: absolute;
+    right: 0;
+    background-color: red;
+    padding-left: 20px;
+    padding-bottom: 20px;
 }
