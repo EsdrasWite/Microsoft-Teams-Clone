@@ -7,6 +7,15 @@ const ConversationContent = () => {
   const [focused, setFocused] = useState<boolean>(false);
   const [focused2, setFocused2] = useState<boolean>(false);
   const [groupVisible, setgroupVisible] = useState<any>(false);
+  const [value, setvalue] = useState<string>("");
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [value]);
 
   const handleGroupe = () => {
     setgroupVisible((prev: any) => {
@@ -17,12 +26,6 @@ const ConversationContent = () => {
         return setgroupVisible(true);
       }
     });
-    // if (groupVisible) {
-    //   setgroupVisible(true);
-    //   setFocused2(true);
-    // } else {
-    //   setgroupVisible(false);
-    // }
   };
   return (
     <div className={styles.container}>
@@ -66,7 +69,15 @@ const ConversationContent = () => {
       <div className={styles.content}>content</div>
       <div className={styles.footer}>
         <div className={styles.inputContainer}>
-          <textarea name="" id="" placeholder="Taper un message" rows={2} />
+          <textarea
+            ref={textareaRef}
+            name=""
+            id=""
+            placeholder="Taper un message"
+            rows={2}
+            value={value}
+            onChange={(e) => setvalue(e.target.value)}
+          />
           <div className={styles.icons}>Icon</div>
         </div>
       </div>
