@@ -3,70 +3,88 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./conversationcontent.module.css";
 import Image from "next/image";
 
-const ConversationContent = () => {
-  const [focused, setFocused] = useState<boolean>(false);
-  const [focused2, setFocused2] = useState<boolean>(false);
-  const [focusedTA, setFocusedTA] = useState<boolean>(false);
-  const [groupVisible, setgroupVisible] = useState<any>(false);
-  const [value, setvalue] = useState<string>("");
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+type Props = {
+  setmsgFocused: React.Dispatch<React.SetStateAction<boolean>>;
+  msgFocused: boolean;
+};
 
+const ConversationContent = ({ msgFocused, setmsgFocused }: Props) => {
+  const [focused, setFocused] = useState<boolean>(false);
+  // const [msgFocused] = useState<boolean>(msgFocused);
+  const [focusedGroup, setFocusedGroup] = useState<boolean>(false);
+  const [focusedTA, setFocusedTA] = useState<boolean>(false);
+  const [groupOpened, setgroupOpened] = useState<any>(false);
+  const [valueTA, setvalueTA] = useState<string>("");
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  //activate focus in textarea when it's cliked & rise up the textarea row size dynamically
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
       textareaRef.current.style.maxHeight = `300px`;
     }
+  }, [valueTA]);
 
-    return () => {
-      if (textareaRef.current) {
-        textareaRef.current.remove();
-      }
-    };
-  }, [value]);
+  //activate focus on message recipien input when the edit button in left menu is cliked
+  useEffect(() => {
+    if (inputRef.current && msgFocused) {
+      inputRef.current.focus();
+    }
+  }, [msgFocused]);
 
   const handleGroupe = () => {
-    setgroupVisible((prev: any) => {
-      if (prev) {
-        return setgroupVisible(false);
-      } else {
-        setFocused2(true);
-        return setgroupVisible(true);
-      }
-    });
+    if (groupOpened) {
+      setgroupOpened(false);
+    } else {
+      setFocusedGroup(true);
+      setgroupOpened(true);
+    }
   };
   return (
     <div className={styles.container}>
       <div
         className={`${styles.header} ${
-          focused ? styles.headerActive : styles.headerInactive
+          focused || msgFocused ? styles.headerActive : styles.headerInactive
         }`}
       >
-        {groupVisible && (
+        {groupOpened && (
           <div
             className={`${styles.groupForm} ${
-              focused2 ? styles.groupFormActive : styles.groupFormInactive
+              focusedGroup ? styles.groupFormActive : styles.groupFormInactive
             }`}
           >
-            <span className={styles.label}>Nom du groupe :</span>
             <input
               type="text"
-              onFocus={() => setFocused2(true)}
-              onBlur={() => setFocused2(false)}
+              placeholder="Nom du groupe :"
+              onFocus={() => {
+                setFocusedGroup(true);
+                setmsgFocused(false);
+              }}
+              onBlur={() => {
+                setFocusedGroup(false);
+              }}
+              autoFocus={focusedGroup}
             />
           </div>
         )}
         <div className={styles.recipientForm}>
           <div className={styles.text}>
-            <span className={styles.label}>A :</span>
+            <span className={styles.label}>A :{msgFocused && "Focused"}</span>
             <input
               type="text"
+              ref={inputRef}
               placeholder="Entez nom, email ou numéro de téléphone"
               onFocus={() => {
                 setFocused(true);
-                setFocused2(false);
+                setFocusedGroup(false);
+                setmsgFocused(false);
               }}
-              onBlur={() => setFocused(false)}
+              onBlur={() => {
+                setFocused(false);
+                setmsgFocused(false);
+              }}
             />
           </div>
           <div className={styles.iconContainer} onClick={handleGroupe}>
@@ -91,13 +109,14 @@ const ConversationContent = () => {
         >
           <textarea
             ref={textareaRef}
-            name=""
-            id=""
             placeholder="Taper un message"
             rows={1}
-            value={value}
-            onChange={(e) => setvalue(e.target.value)}
-            onFocus={() => setFocusedTA(true)}
+            value={valueTA}
+            onChange={(e) => setvalueTA(e.target.value)}
+            onFocus={() => {
+              setFocusedTA(true);
+              setmsgFocused(false);
+            }}
             onBlur={() => setFocusedTA(false)}
           />
           {/* <div className={styles.icons}>Icon</div> */}
