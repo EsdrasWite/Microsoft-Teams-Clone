@@ -14,6 +14,7 @@ const ConversationContent = () => {
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+      textareaRef.current.style.maxHeight = `300px`;
     }
   }, [value]);
 
@@ -74,11 +75,31 @@ const ConversationContent = () => {
             name=""
             id=""
             placeholder="Taper un message"
-            rows={2}
+            rows={1}
             value={value}
             onChange={(e) => setvalue(e.target.value)}
           />
-          <div className={styles.icons}>Icon</div>
+          {/* <div className={styles.icons}>Icon</div> */}
+          <div className={styles.icContainer}>
+            <div className={styles.icItem}>
+              <Image src="/emoji.svg" alt="" fill />
+            </div>
+            <div className={styles.icItem}>
+              <Image src="/image.svg" alt="" width={15} height={15} />
+            </div>
+            <div className={styles.icItem}>
+              <Image src="/attached.svg" alt="" fill />
+            </div>
+            <div className={styles.icItem}>
+              <Image src="/add.svg" alt="" fill />
+            </div>
+            <div className={styles.icItem}>
+              <Image src="/bar.svg" alt="" fill />
+            </div>
+            <div className={styles.icItem}>
+              <Image src="/send.svg" alt="" fill />
+            </div>
+          </div>
         </div>
       </div>
     </div>
