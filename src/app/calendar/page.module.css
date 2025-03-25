@@ -5,4 +5,11 @@
     flex: 1;
     border-radius: 10px;
     background-color: var(--textPrimary);
+    align-items: center;
+    justify-content: center;
+}
+
+.container h1{
+    font-size: 30px;
+    color: var(--background);
 }
