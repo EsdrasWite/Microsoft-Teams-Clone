@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
 import styles from "./navbar.module.css";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const router = useRouter();
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
@@ -15,6 +18,7 @@ const Navbar = () => {
             height={25}
             alt="logo"
             className={styles.arrowLeft}
+            onClick={() => router.back()}
           />
           <Image
             src="/arrow.svg"
@@ -22,6 +26,7 @@ const Navbar = () => {
             height={25}
             alt="logo"
             className={styles.arrowRight}
+            onClick={() => router.forward()}
           />
         </div>
         <div className={styles.inputContainer}>
