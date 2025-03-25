@@ -55,3 +55,38 @@
 .item:hover .tooltip{
     opacity: 1;
 }
+
+
+/* Popup Menu */
+.popupMenu{
+    background-color: var(--foreground);
+    color: var(--text);
+    position: absolute;
+    top: 130%;
+    border-radius: 8px;
+    padding: 8px;
+    border: 1px solid #5f5f5f33;
+    width: max-content;
+    right: 30%;
+
+}
+.popupMenu ul{
+    list-style: none
+}
+.popupMenu ul li{  
+     padding: 5px;
+     border-radius: 4px;
+}
+
+.popupMenu ul li:hover{  
+ background-color: #494949dc;
+}
+.popupMenu ul li .items{
+    display: flex;
+    gap: 8px;
+    white-space: nowrap;
+}
+.popupMenu ul li .items span{
+  font-size: 13px;
+  color:#dbe5efe1;
+}
