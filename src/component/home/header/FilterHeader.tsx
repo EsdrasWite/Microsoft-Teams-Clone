@@ -9,12 +9,36 @@ const FilterHeader = (props: Props) => {
   const [isFocused, setisFocused] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  //Popup menu
+  const [isOpened, setisOpened] = useState<boolean>(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const toggleMenu = () => {
+    setisOpened(!isOpened);
+  };
+
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
     setisFocused(true);
   }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e: any) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setisOpened(false);
+      }
+    };
+
+    if (isOpened) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpened]);
+
   return (
     <div
       className={`${styles.header} ${
@@ -29,9 +53,45 @@ const FilterHeader = (props: Props) => {
         onBlur={() => setisFocused(false)}
       />
       <div className={styles.icons}>
-        <div className={styles.item}>
-          <Image src="/filter.svg" alt="" width={20} height={20} />
+        <div className={styles.item} onClick={toggleMenu}>
+          <Image
+            src="/filter.svg"
+            alt=""
+            width={20}
+            height={20}
+            className={styles.filterIcon}
+          />
           <span className={styles.tooltip}>Plus de filtres</span>
+          {isOpened && (
+            <div className={styles.popupMenu} ref={menuRef}>
+              <ul>
+                <li>
+                  <div className={styles.items}>
+                    <Image src="/square.svg" alt="" width={14} height={14} />
+                    <span>Non lus</span>
+                  </div>
+                </li>
+                <li>
+                  <div className={styles.items}>
+                    <Image src="/message.svg" alt="" width={14} height={14} />
+                    <span>Conversations</span>
+                  </div>
+                </li>
+                <li>
+                  <div className={styles.items}>
+                    <Image src="/camera.svg" alt="" width={14} height={14} />
+                    <span>Réunions</span>
+                  </div>
+                </li>
+                <li>
+                  <div className={styles.items}>
+                    <Image src="/warning-2.svg" alt="" width={14} height={14} />
+                    <span>Notifications désactivées</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
         <div className={styles.item}>
           <Image
