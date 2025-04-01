@@ -201,7 +201,7 @@ padding-left: 10px;
     display: flex;
     flex-direction: column;
     position:absolute;
-    border-radius: 8px;
+    border-radius: 20px;
     box-shadow: #00000054 0px 5px 15px 0px;    position: absolute;
     top: 140%;
     width: 300px;
