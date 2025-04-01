@@ -9,6 +9,7 @@ const Navbar = () => {
   const [zoomLevel, setZoomLevel] = useState<number>(1);
   const [_, setIsFullscreen] = useState<boolean>(false);
   const [isOpened, setisOpened] = useState<boolean>(false);
+  const [isUserMenuOpened, setisUserMenuOpened] = useState<boolean>(false);
 
   // Function to zoom in
   const zoomIn = () => {
@@ -55,6 +56,11 @@ const Navbar = () => {
   const menuRef = useRef<HTMLDivElement>(null);
   const toggleMenu = () => {
     setisOpened(!isOpened);
+  };
+  //Popup usermenu
+  const userMenuRef = useRef<HTMLDivElement>(null);
+  const toggleuserMenu = () => {
+    setisUserMenuOpened(!isUserMenuOpened);
   };
 
   useEffect(() => {
@@ -216,6 +222,21 @@ const Navbar = () => {
               height={20}
               className={styles.iconUser}
             />
+            <div className={styles.popupUserMenu} ref={userMenuRef}>
+              <div className={styles.topUser}>
+                <span>Activtés dans vos autres comptes et organisations</span>
+              </div>
+              <div className={styles.bottomUser}>
+                <Image
+                  src="/hand-with-fingers.svg"
+                  alt=""
+                  width={20}
+                  height={20}
+                  // className={styles.iconUser}
+                />
+                <span>Aucune activité</span>
+              </div>
+            </div>
           </div>
           <div className={styles.ico}>
             <div className={styles.user}>
