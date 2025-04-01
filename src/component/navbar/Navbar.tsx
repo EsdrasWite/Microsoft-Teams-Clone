@@ -79,6 +79,22 @@ const Navbar = () => {
     };
   }, [isOpened]);
 
+  useEffect(() => {
+    const handleClickOutside = (e: any) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(e.target)) {
+        setisUserMenuOpened(false);
+      }
+    };
+
+    if (isUserMenuOpened) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isUserMenuOpened]);
+
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
@@ -221,22 +237,25 @@ const Navbar = () => {
               width={20}
               height={20}
               className={styles.iconUser}
+              onClick={toggleuserMenu}
             />
-            <div className={styles.popupUserMenu} ref={userMenuRef}>
-              <div className={styles.topUser}>
-                <span>Activtés dans vos autres comptes et organisations</span>
+            {isUserMenuOpened && (
+              <div className={styles.popupUserMenu} ref={userMenuRef}>
+                <div className={styles.topUser}>
+                  <span>Activtés dans vos autres comptes et organisations</span>
+                </div>
+                <div className={styles.bottomUser}>
+                  <Image
+                    src="/hand-with-fingers.svg"
+                    alt=""
+                    width={25}
+                    height={25}
+                    // className={styles.iconUser}
+                  />
+                  <span>Aucune activité</span>
+                </div>
               </div>
-              <div className={styles.bottomUser}>
-                <Image
-                  src="/hand-with-fingers.svg"
-                  alt=""
-                  width={20}
-                  height={20}
-                  // className={styles.iconUser}
-                />
-                <span>Aucune activité</span>
-              </div>
-            </div>
+            )}
           </div>
           <div className={styles.ico}>
             <div className={styles.user}>
