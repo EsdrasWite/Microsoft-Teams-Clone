@@ -39,6 +39,18 @@ const Navbar = () => {
     }
   };
 
+  // close the tab
+  const openAndCloseTab = () => {
+    const newTab = window.open("about:blank", "_self"); // Open a blank tab
+    if (newTab) newTab.close(); // Close the tab
+  };
+
+  // minimize the tab
+  const minimizeWindow = () => {
+    const newTab = window.open("about:blank");
+    if (newTab) window.close(); // Close the current window
+  };
+
   //Popup menu
   const menuRef = useRef<HTMLDivElement>(null);
   const toggleMenu = () => {
@@ -210,13 +222,13 @@ const Navbar = () => {
           </div>
         </div>
         <div className={styles.btns}>
-          <div className={styles.btnIcon}>
+          <div className={styles.btnIcon} onClick={minimizeWindow}>
             <Image src="/line.svg" alt="" width={15} height={15} />
           </div>
-          <div className={styles.btnIcon}>
+          <div className={styles.btnIcon} onClick={toggleFullscreen}>
             <Image src="/square.svg" alt="" width={15} height={15} />
           </div>
-          <div className={styles.btnIconClose}>
+          <div className={styles.btnIconClose} onClick={openAndCloseTab}>
             <Image src="/close.svg" alt="" width={15} height={15} />
           </div>
         </div>
