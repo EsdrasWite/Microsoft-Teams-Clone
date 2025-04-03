@@ -2,9 +2,42 @@
 import Image from "next/image";
 import styles from "./navbar.module.css";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const Navbar = () => {
   const router = useRouter();
+  const [zoomLevel, setZoomLevel] = useState<number>(1);
+  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+
+  // Function to zoom in
+  const zoomIn = () => {
+    const newZoom = zoomLevel + 0.1;
+    document.body.style.zoom = `${newZoom}`; // Works in Chrome, Edge, Safari (not Firefox)
+    setZoomLevel(newZoom);
+  };
+
+  // Function to zoom out
+  const zoomOut = () => {
+    const newZoom = zoomLevel - 0.1;
+    document.body.style.zoom = `${newZoom}`;
+    setZoomLevel(newZoom);
+  };
+
+  // Function to toggle fullscreen mode
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement
+        .requestFullscreen()
+        .then(() => setIsFullscreen(true))
+        .catch((err) => console.error("Error entering fullscreen:", err));
+    } else {
+      document
+        .exitFullscreen()
+        .then(() => setIsFullscreen(false))
+        .catch((err) => console.error("Error exiting fullscreen:", err));
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
@@ -75,15 +108,20 @@ const Navbar = () => {
                     {/* <Image src="/warning-2.svg" alt="" width={14} height={14} /> */}
                     <span>Zoom</span>
                     <div className={styles.zoom}>
-                      <span className={styles.ZomIcons}>-</span>
+                      <span className={styles.ZomIcons} onClick={zoomOut}>
+                        -
+                      </span>
                       <span>(100%)</span>
-                      <span className={styles.ZomIcons}>+</span>
+                      <span className={styles.ZomIcons} onClick={zoomIn}>
+                        +
+                      </span>
                       <Image
                         src="/fullscreen.svg"
                         alt=""
                         width={20}
                         height={20}
                         className={styles.ZomIcons}
+                        onClick={toggleFullscreen}
                       />
                     </div>
                   </div>
