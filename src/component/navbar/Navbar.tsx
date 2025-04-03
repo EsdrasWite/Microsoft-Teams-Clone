@@ -93,13 +93,13 @@ const Navbar = () => {
                 </li>
                 <li>
                   <div className={styles.items}>
-                    <Image src="/message.svg" alt="" width={14} height={14} />
+                    <Image src="/help.svg" alt="" width={14} height={14} />
                     <span>Aide</span>
                   </div>
                 </li>
                 <li>
                   <div className={styles.items}>
-                    <Image src="/camera.svg" alt="" width={14} height={14} />
+                    <Image src="/message.svg" alt="" width={14} height={14} />
                     <span>Commentaire</span>
                   </div>
                 </li>
@@ -134,19 +134,24 @@ const Navbar = () => {
                 </li>
                 <li className={styles.borderItem}>
                   <div className={styles.items}>
-                    <Image src="/warning-2.svg" alt="" width={14} height={14} />
+                    <Image src="/diamond.svg" alt="" width={14} height={14} />
                     <span>Mettre à niveau</span>
                   </div>
                 </li>
                 <li className={styles.borderItem}>
                   <div className={styles.items}>
-                    <Image src="/warning-2.svg" alt="" width={14} height={14} />
+                    <Image
+                      src="/user-heart.svg"
+                      alt=""
+                      width={14}
+                      height={14}
+                    />
                     <span>Programme Teams Insider</span>
                   </div>
                 </li>
                 <li className={styles.borderItem}>
                   <div className={styles.items}>
-                    <Image src="/warning-2.svg" alt="" width={14} height={14} />
+                    <Image src="/telephone.svg" alt="" width={14} height={14} />
                     <span>Télécharger l'application mobile</span>
                   </div>
                 </li>
