@@ -111,7 +111,7 @@ const Navbar = () => {
                       <span className={styles.ZomIcons} onClick={zoomOut}>
                         -
                       </span>
-                      <span>(100%)</span>
+                      <span>({`${zoomLevel * 100} %`})</span>
                       <span className={styles.ZomIcons} onClick={zoomIn}>
                         +
                       </span>
