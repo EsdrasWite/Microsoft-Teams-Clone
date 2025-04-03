@@ -68,25 +68,26 @@ const FilterHeader = (props: Props) => {
                 <li>
                   <div className={styles.items}>
                     <Image src="/square.svg" alt="" width={14} height={14} />
-                    <span>Non lus</span>
+                    <span>Paramètres</span>
                   </div>
                 </li>
                 <li>
                   <div className={styles.items}>
                     <Image src="/message.svg" alt="" width={14} height={14} />
-                    <span>Conversations</span>
+                    <span>Aide</span>
                   </div>
                 </li>
                 <li>
                   <div className={styles.items}>
                     <Image src="/camera.svg" alt="" width={14} height={14} />
-                    <span>Réunions</span>
+                    <span>Commentaire</span>
                   </div>
                 </li>
+                <hr />
                 <li>
                   <div className={styles.items}>
                     <Image src="/warning-2.svg" alt="" width={14} height={14} />
-                    <span>Notifications désactivées</span>
+                    <span>Zoom</span>
                   </div>
                 </li>
               </ul>
