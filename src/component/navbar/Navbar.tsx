@@ -140,7 +140,7 @@ const Navbar = () => {
                       <span>Commentaire</span>
                     </div>
                   </li>
-                  <li className={`${styles.borderItem} ${styles.listZoom}`}>
+                  <li className={styles.listZoom}>
                     <div className={`$ ${styles.bordered}`}>
                       {/* <Image src="/warning-2.svg" alt="" width={14} height={14} /> */}
                       <span>Zoom</span>
@@ -163,20 +163,20 @@ const Navbar = () => {
                       </div>
                     </div>
                   </li>
-                  <li className={styles.borderItem}>
+                  <li>
                     <div className={styles.items}>
                       {/* <Image src="/warning-2.svg" alt="" width={14} height={14} /> */}
                       <span>Raccourcis clavier</span>
                     </div>
                   </li>
-                  <li className={styles.borderItem}>
+                  <li>
                     <div className={styles.items}>
                       <Image src="/diamond.svg" alt="" width={14} height={14} />
                       <span>Mettre à niveau</span>
                     </div>
                   </li>
-                  <li className={styles.borderItem}>
-                    <div className={styles.items}>
+                  <li className={styles.withNew}>
+                    <div className={styles.itemsWithNew}>
                       <Image
                         src="/user-heart.svg"
                         alt=""
@@ -185,9 +185,12 @@ const Navbar = () => {
                       />
                       <span>Programme Teams Insider</span>
                     </div>
+                    <div className={styles.new}>
+                      <span>Nouveau</span>
+                    </div>
                   </li>
-                  <li className={styles.borderItem}>
-                    <div className={styles.items}>
+                  <li className={styles.withNew}>
+                    <div className={styles.itemsWithNew}>
                       <Image
                         src="/telephone.svg"
                         alt=""
@@ -195,6 +198,9 @@ const Navbar = () => {
                         height={14}
                       />
                       <span>Télécharger l'application mobile</span>
+                    </div>
+                    <div className={styles.new}>
+                      <span>Nouveau</span>
                     </div>
                   </li>
                 </ul>
