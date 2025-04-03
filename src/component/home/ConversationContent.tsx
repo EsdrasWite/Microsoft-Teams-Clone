@@ -93,9 +93,7 @@ const ConversationContent = ({ msgFocused, setmsgFocused }: Props) => {
         </div>
       </div>
       <div className={styles.content}>
-        <div className={styles.imgContainer}>
-          <Image src="/messageIcon.png" alt="" fill />
-        </div>
+        <Image src="/messageIcon.png" alt="" width={400} height={250} />
         <div className={styles.imgText}>
           <h4>Vous démarrez une nouvelle conversation</h4>
           <span>Tapez votre premier message ci-dessous.</span>
