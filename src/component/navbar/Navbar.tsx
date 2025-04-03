@@ -2,12 +2,13 @@
 import Image from "next/image";
 import styles from "./navbar.module.css";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Navbar = () => {
   const router = useRouter();
   const [zoomLevel, setZoomLevel] = useState<number>(1);
-  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+  const [_, setIsFullscreen] = useState<boolean>(false);
+  const [isOpened, setisOpened] = useState<boolean>(false);
 
   // Function to zoom in
   const zoomIn = () => {
@@ -37,6 +38,28 @@ const Navbar = () => {
         .catch((err) => console.error("Error exiting fullscreen:", err));
     }
   };
+
+  //Popup menu
+  const menuRef = useRef<HTMLDivElement>(null);
+  const toggleMenu = () => {
+    setisOpened(!isOpened);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (e: any) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setisOpened(false);
+      }
+    };
+
+    if (isOpened) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpened]);
 
   return (
     <div className={styles.container}>
@@ -82,81 +105,89 @@ const Navbar = () => {
               width={20}
               height={20}
               className={styles.iconMore}
+              onClick={toggleMenu}
             />
-            <div className={styles.popupMenu}>
-              <ul>
-                <li>
-                  <div className={styles.items}>
-                    <Image src="/setting.svg" alt="" width={14} height={14} />
-                    <span>Paramètres</span>
-                  </div>
-                </li>
-                <li>
-                  <div className={styles.items}>
-                    <Image src="/help.svg" alt="" width={14} height={14} />
-                    <span>Aide</span>
-                  </div>
-                </li>
-                <li>
-                  <div className={styles.items}>
-                    <Image src="/message.svg" alt="" width={14} height={14} />
-                    <span>Commentaire</span>
-                  </div>
-                </li>
-                <li className={`${styles.borderItem} ${styles.listZoom}`}>
-                  <div className={`$ ${styles.bordered}`}>
-                    {/* <Image src="/warning-2.svg" alt="" width={14} height={14} /> */}
-                    <span>Zoom</span>
-                    <div className={styles.zoom}>
-                      <span className={styles.ZomIcons} onClick={zoomOut}>
-                        -
-                      </span>
-                      <span>({`${zoomLevel * 100} %`})</span>
-                      <span className={styles.ZomIcons} onClick={zoomIn}>
-                        +
-                      </span>
-                      <Image
-                        src="/fullscreen.svg"
-                        alt=""
-                        width={20}
-                        height={20}
-                        className={styles.ZomIcons}
-                        onClick={toggleFullscreen}
-                      />
+            {isOpened && (
+              <div className={styles.popupMenu} ref={menuRef}>
+                <ul>
+                  <li>
+                    <div className={styles.items}>
+                      <Image src="/setting.svg" alt="" width={14} height={14} />
+                      <span>Paramètres</span>
                     </div>
-                  </div>
-                </li>
-                <li className={styles.borderItem}>
-                  <div className={styles.items}>
-                    {/* <Image src="/warning-2.svg" alt="" width={14} height={14} /> */}
-                    <span>Raccourcis clavier</span>
-                  </div>
-                </li>
-                <li className={styles.borderItem}>
-                  <div className={styles.items}>
-                    <Image src="/diamond.svg" alt="" width={14} height={14} />
-                    <span>Mettre à niveau</span>
-                  </div>
-                </li>
-                <li className={styles.borderItem}>
-                  <div className={styles.items}>
-                    <Image
-                      src="/user-heart.svg"
-                      alt=""
-                      width={14}
-                      height={14}
-                    />
-                    <span>Programme Teams Insider</span>
-                  </div>
-                </li>
-                <li className={styles.borderItem}>
-                  <div className={styles.items}>
-                    <Image src="/telephone.svg" alt="" width={14} height={14} />
-                    <span>Télécharger l'application mobile</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </li>
+                  <li>
+                    <div className={styles.items}>
+                      <Image src="/help.svg" alt="" width={14} height={14} />
+                      <span>Aide</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div className={styles.items}>
+                      <Image src="/message.svg" alt="" width={14} height={14} />
+                      <span>Commentaire</span>
+                    </div>
+                  </li>
+                  <li className={`${styles.borderItem} ${styles.listZoom}`}>
+                    <div className={`$ ${styles.bordered}`}>
+                      {/* <Image src="/warning-2.svg" alt="" width={14} height={14} /> */}
+                      <span>Zoom</span>
+                      <div className={styles.zoom}>
+                        <span className={styles.ZomIcons} onClick={zoomOut}>
+                          -
+                        </span>
+                        <span>({`${zoomLevel * 100} %`})</span>
+                        <span className={styles.ZomIcons} onClick={zoomIn}>
+                          +
+                        </span>
+                        <Image
+                          src="/fullscreen.svg"
+                          alt=""
+                          width={20}
+                          height={20}
+                          className={styles.ZomIcons}
+                          onClick={toggleFullscreen}
+                        />
+                      </div>
+                    </div>
+                  </li>
+                  <li className={styles.borderItem}>
+                    <div className={styles.items}>
+                      {/* <Image src="/warning-2.svg" alt="" width={14} height={14} /> */}
+                      <span>Raccourcis clavier</span>
+                    </div>
+                  </li>
+                  <li className={styles.borderItem}>
+                    <div className={styles.items}>
+                      <Image src="/diamond.svg" alt="" width={14} height={14} />
+                      <span>Mettre à niveau</span>
+                    </div>
+                  </li>
+                  <li className={styles.borderItem}>
+                    <div className={styles.items}>
+                      <Image
+                        src="/user-heart.svg"
+                        alt=""
+                        width={14}
+                        height={14}
+                      />
+                      <span>Programme Teams Insider</span>
+                    </div>
+                  </li>
+                  <li className={styles.borderItem}>
+                    <div className={styles.items}>
+                      <Image
+                        src="/telephone.svg"
+                        alt=""
+                        width={14}
+                        height={14}
+                      />
+                      <span>Télécharger l'application mobile</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
 
           <div className={styles.icon}>
