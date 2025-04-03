@@ -42,25 +42,96 @@ const Navbar = () => {
       </div>
       <div className={styles.iconsContent}>
         <div className={styles.icons}>
-          <Image
-            src="/more.svg"
-            alt=""
-            width={20}
-            height={20}
-            className={styles.iconMore}
-          />
-          <Image
-            src="/user.svg"
-            alt=""
-            width={20}
-            height={20}
-            className={styles.iconUser}
-          />
-          <div className={styles.user}>
-            <span className={styles.username}>Esdras Wite</span>
-            <Image src="/warning-1.svg" alt="" width={14} height={14} />
-            <div className={styles.avatar}>
-              <span className={styles.userinitial}>EW</span>
+          <div className={styles.icon}>
+            <Image
+              src="/more.svg"
+              alt=""
+              width={20}
+              height={20}
+              className={styles.iconMore}
+            />
+            <div className={styles.popupMenu}>
+              <ul>
+                <li>
+                  <div className={styles.items}>
+                    <Image src="/setting.svg" alt="" width={14} height={14} />
+                    <span>Paramètres</span>
+                  </div>
+                </li>
+                <li>
+                  <div className={styles.items}>
+                    <Image src="/message.svg" alt="" width={14} height={14} />
+                    <span>Aide</span>
+                  </div>
+                </li>
+                <li>
+                  <div className={styles.items}>
+                    <Image src="/camera.svg" alt="" width={14} height={14} />
+                    <span>Commentaire</span>
+                  </div>
+                </li>
+                <li className={`${styles.borderItem} ${styles.listZoom}`}>
+                  <div className={`$ ${styles.bordered}`}>
+                    {/* <Image src="/warning-2.svg" alt="" width={14} height={14} /> */}
+                    <span>Zoom</span>
+                    <div className={styles.zoom}>
+                      <span className={styles.ZomIcons}>-</span>
+                      <span>(100%)</span>
+                      <span className={styles.ZomIcons}>+</span>
+                      <Image
+                        src="/fullscreen.svg"
+                        alt=""
+                        width={20}
+                        height={20}
+                        className={styles.ZomIcons}
+                      />
+                    </div>
+                  </div>
+                </li>
+                <li className={styles.borderItem}>
+                  <div className={styles.items}>
+                    {/* <Image src="/warning-2.svg" alt="" width={14} height={14} /> */}
+                    <span>Raccourcis clavier</span>
+                  </div>
+                </li>
+                <li className={styles.borderItem}>
+                  <div className={styles.items}>
+                    <Image src="/warning-2.svg" alt="" width={14} height={14} />
+                    <span>Mettre à niveau</span>
+                  </div>
+                </li>
+                <li className={styles.borderItem}>
+                  <div className={styles.items}>
+                    <Image src="/warning-2.svg" alt="" width={14} height={14} />
+                    <span>Programme Teams Insider</span>
+                  </div>
+                </li>
+                <li className={styles.borderItem}>
+                  <div className={styles.items}>
+                    <Image src="/warning-2.svg" alt="" width={14} height={14} />
+                    <span>Télécharger l'application mobile</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className={styles.icon}>
+            <Image
+              src="/user.svg"
+              alt=""
+              width={20}
+              height={20}
+              className={styles.iconUser}
+            />
+          </div>
+          <div className={styles.ico}>
+            <div className={styles.user}>
+              <span className={styles.username}>Esdras Wite</span>
+              <Image src="/warning-1.svg" alt="" width={14} height={14} />
+              <div className={styles.avatar}>
+                <span className={styles.userinitial}>EW</span>
+              </div>
             </div>
           </div>
         </div>
