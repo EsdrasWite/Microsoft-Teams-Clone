@@ -96,11 +96,7 @@
     align-items: center;
     justify-content: center;
 }
-.imgContainer{
-position: relative;
-width: 400px;
-height: 250px;
-}
+
 .imgText{
   color: var(--text);
   font-size: 14px;
@@ -112,9 +108,7 @@ height: 250px;
     font-weight: bold;
     margin-bottom: 10px;
 }
-/* .imgText span{
-    text-align: center;
-} */
+
 .footer{
     padding: 25px 60px;
     background-color: var(--foreground);
