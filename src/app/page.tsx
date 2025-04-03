@@ -2,12 +2,12 @@
 import ConversationMenu from "@/component/home/ConversationMenu";
 import ConversationContent from "@/component/home/ConversationContent";
 import styles from "./app.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Home() {
   const [msgFocused, setmsgFocused] = useState<boolean>(false);
 
-  console.log(msgFocused);
+  // console.log(msgFocused);
 
   return (
     <div className={styles.container}>
